@@ -1,6 +1,13 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
-import { CheckIcon } from "@heroicons/react/24/outline";
+import { CheckIcon,
+  ChatBubbleLeftRightIcon,
+  GlobeEuropeAfricaIcon,
+  Bars3BottomLeftIcon,
+  Cog8ToothIcon,
+  BoltIcon
+
+ } from "@heroicons/react/24/outline";
 import whowe1 from "../../public/images/whowe1.jpg";
 import whowe2 from "../../public/images/whowe2.jpg";
 import leaf from "../../public/images/leaf.png";
@@ -15,6 +22,45 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+
+  const offerData=[
+    {
+      icon:"",
+      miniTitle:"What We Offer",
+      title:"A holistic journey to harmony",
+      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
+    },
+    {
+      icon:ChatBubbleLeftRightIcon,
+      miniTitle:"",
+      title:"Consultation",
+      para:"Ut placerat tincidunt ullamcorper penatibus metus class ipsum nam fusce. Risus neque eros nec rhoncus luctus."
+    },
+    {
+      icon:GlobeEuropeAfricaIcon,
+      miniTitle:"",
+      title:"Ayurvedic Treatments",
+      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
+    },
+    {
+      icon:BoltIcon,
+      miniTitle:"",
+      title:"Theta Healing",
+      para:"Ut placerat tincidunt ullamcorper penatibus metus class ipsum nam fusce. Risus neque eros nec rhoncus luctus."
+    },
+    {
+      icon:Bars3BottomLeftIcon,
+      miniTitle:"",
+      title:"Coaching Program",
+      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
+    },
+    {
+      icon:Cog8ToothIcon,
+      miniTitle:"",
+      title:"Yoga & Meditation",
+      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
+    },
+  ]
   return (
     <>
       {/* Banner Section */}
@@ -120,6 +166,24 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+      {/* what we offer */}
+      <section className="mx-auto max-w-7xl mt-28">
+        <div className="grid grid-cols-3 gap-5">
+        {
+          offerData?.map((ele)=>{
+            return(
+              <div className="flex flex-col gap-3 bg-gray-100 p-7">
+                  
+                  <h3 className="text-[25px]">{ele?.title}</h3>
+                  <p className="text-[16px] text-gray-500">{ele?.para}</p>
+              </div>
+              
+            )
+          })
+        }
+        </div>
+       
       </section>
     </>
   );
