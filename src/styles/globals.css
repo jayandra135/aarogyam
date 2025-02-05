@@ -31,3 +31,11 @@ body{
   height:100vh;
 
 }
+
+.bgSpaceImage{
+  background-image: url("../../public/images/spaceimage.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  /* height: 400px; */
+}
