@@ -1,16 +1,19 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
-import { CheckIcon,
+import {
+  CheckIcon,
   ChatBubbleLeftRightIcon,
   GlobeEuropeAfricaIcon,
   Bars3BottomLeftIcon,
   Cog8ToothIcon,
-  BoltIcon
-
- } from "@heroicons/react/24/outline";
+  BoltIcon,
+} from "@heroicons/react/24/outline";
 import whowe1 from "../../public/images/whowe1.jpg";
 import whowe2 from "../../public/images/whowe2.jpg";
 import leaf from "../../public/images/leaf.png";
+import arrow from "../../public/images/arrow.png";
+import mark from "../../public/images/mark.png";
+import whyChoose from "../../public/images/whyChoose.jpg";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,43 +25,74 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const offerData = [
+    {
+      icon: null,
+      miniTitle: "What We Offer",
+      title: "A holistic journey to harmony",
+      para: "Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo.",
+    },
+    {
+      icon: ChatBubbleLeftRightIcon,
+      miniTitle: "",
+      title: "Consultation",
+      para: "Ut placerat tincidunt ullamcorper penatibus metus class ipsum nam fusce. Risus neque eros nec rhoncus luctus.",
+    },
+    {
+      icon: GlobeEuropeAfricaIcon,
+      miniTitle: "",
+      title: "Ayurvedic Treatments",
+      para: "Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo.",
+    },
+    {
+      icon: BoltIcon,
+      miniTitle: "",
+      title: "Theta Healing",
+      para: "Ut placerat tincidunt ullamcorper penatibus metus class ipsum nam fusce. Risus neque eros nec rhoncus luctus.",
+    },
+    {
+      icon: Bars3BottomLeftIcon,
+      miniTitle: "",
+      title: "Coaching Program",
+      para: "Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo.",
+    },
+    {
+      icon: Cog8ToothIcon,
+      miniTitle: "",
+      title: "Yoga & Meditation",
+      para: "Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo.",
+    },
+  ];
 
-  const offerData=[
+  const whyChooseData = [
     {
-      icon:"",
-      miniTitle:"What We Offer",
-      title:"A holistic journey to harmony",
-      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
+      title: "100% Organic Herbal",
+      para: "Nisl pharetra lobortis mi litora ultrices si. Enim tellus senectus dignissim cras phasellus netus",
     },
     {
-      icon:ChatBubbleLeftRightIcon,
-      miniTitle:"",
-      title:"Consultation",
-      para:"Ut placerat tincidunt ullamcorper penatibus metus class ipsum nam fusce. Risus neque eros nec rhoncus luctus."
+      title: "Professional Therapist",
+      para: "Nisl pharetra lobortis mi litora ultrices si. Enim tellus senectus dignissim cras phasellus netus.",
     },
     {
-      icon:GlobeEuropeAfricaIcon,
-      miniTitle:"",
-      title:"Ayurvedic Treatments",
-      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
+      title: "Hereditary Recipe",
+      para: "Nisl pharetra lobortis mi litora ultrices si. Enim tellus senectus dignissim cras phasellus netus.",
+    },
+  ];
+  const howWorkData = [
+    {
+      id:1,
+      title:"Consultation with our experts",
+      para:"Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue."
     },
     {
-      icon:BoltIcon,
-      miniTitle:"",
-      title:"Theta Healing",
-      para:"Ut placerat tincidunt ullamcorper penatibus metus class ipsum nam fusce. Risus neque eros nec rhoncus luctus."
+      id:2,
+      title:"Get an appointment",
+      para:"Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue."
     },
     {
-      icon:Bars3BottomLeftIcon,
-      miniTitle:"",
-      title:"Coaching Program",
-      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
-    },
-    {
-      icon:Cog8ToothIcon,
-      miniTitle:"",
-      title:"Yoga & Meditation",
-      para:"Aliquam class vivamus a urna dictumst lorem praesent facilisi primis. Malesuada a tortor lorem lacinia sagittis leo."
+      id:3,
+      title:"Enjoy your service",
+      para:"Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue."
     },
   ]
   return (
@@ -169,21 +203,87 @@ export default function Home() {
       </section>
       {/* what we offer */}
       <section className="mx-auto max-w-7xl mt-28">
-        <div className="grid grid-cols-3 gap-5">
-        {
-          offerData?.map((ele)=>{
-            return(
-              <div className="flex flex-col gap-3 bg-gray-100 p-7">
-                  
-                  <h3 className="text-[25px]">{ele?.title}</h3>
-                  <p className="text-[16px] text-gray-500">{ele?.para}</p>
+        <div className="grid grid-cols-3 gap-5 ">
+          {offerData?.map((ele, index) => {
+            const IconComponent = ele.icon;
+            return (
+              <div
+                key={index}
+                className="relative flex flex-col gap-3 bg-gray-100 p-7"
+              >
+                {IconComponent && (
+                  <IconComponent className="w-10 h-10 text-white bg-[#b2be59] p-2" />
+                )}
+                {index === 0 && (
+                  <h2 className="text-[18px] uppercase">{ele?.miniTitle}</h2>
+                )}
+                <h3
+                  className={`${
+                    index === 0 ? "text-[42px] leading-[40px]" : "text-[25px]"
+                  } `}
+                >
+                  {ele?.title}
+                </h3>
+                <p className="text-[16px] text-gray-500">{ele?.para}</p>
+
+                <div className="absolute right-0 top-0 border-l-[6px] border-b-[6px] border-l-white border-b-white  ">
+                  <Image
+                    src={arrow}
+                    alt="arrow"
+                    className="w-[40px] h-[40px] shadow-lg"
+                  />
+                </div>
               </div>
-              
-            )
-          })
-        }
+            );
+          })}
         </div>
-       
+      </section>
+      <section className="mx-auto max-w-7xl mt-28 ">
+        <div className="flex gap-5">
+          <div className="basis-2/5">
+            <div className="flex flex-col gap-y-5">
+              <h4 className="text-[18px] uppercase">Why Choose Us</h4>
+              <h2 className="text-[42px] leading-[45px]">Nature’s secret for your truly health</h2>
+              <p className="text-gray-500 text-[16px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                tellus, luctus nec ullamcorper mattis.
+              </p>
+              {whyChooseData?.map((ele, index) => {
+                return (
+                  <div className="flex gap-x-5" key={index}>
+                    <CheckIcon className="w-[60px] h-[60px] bg-[#b2be59] text-white p-3" />
+                    <div className="flex flex-col gap-y-2">
+                      <h4 className="text-[20px]">{ele?.title}</h4>
+                      <p className="text-[16px] text-gray-500">{ele?.para}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="basis-3/5">
+              <Image src={whyChoose} alt="whyChoose" className="w-full" />
+          </div>
+        </div>
+      </section>
+      <section className="mx-auto max-w-7xl mt-28 mb-28">
+            <div className="grid grid-cols-2">
+                <div className="flex flex-col gap-5">
+                  {
+                    howWorkData?.map((ele,index)=>{
+                        return(
+                          <div className={`${index===0?"bg-[#b2be59]":"border-l-4 border-l-[#b2be59] hover:bg-[#b2be59]"} flex gap-x-5 p-5 shadow-lg items-start `}>
+                              <h6 className={`${index===0?"bg-white text-[#b2be59]": " bg-[#b2be59] text-white hover:bg-white hover:text-[#b2be59] "} text-[18px] px-5 py-2 ` }>{ele?.id}</h6>
+                              <div className="flex flex-col">
+                                  <h4 className="text-[24px]">{ele?.title}</h4>
+                                  <p className="text-[18px] text-gray-500">{ele?.para}</p>
+                              </div>
+                          </div>
+                        )
+                    })
+                  }
+                </div>
+            </div>
       </section>
     </>
   );
