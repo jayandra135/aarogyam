@@ -145,8 +145,8 @@ export default function Home() {
         <div className="basis-2/4">
           <div className="relative  flex items-center justify-center ">
             <div className="grid grid-cols-2 gap-5">
-              <Image src={whowe1} alt="whowe1" />
-              <Image src={whowe2} alt="whowe2" />
+              <Image src={whowe1} alt="whowe1" priority={false} loading="lazy" />
+              <Image src={whowe2} alt="whowe2" priority={false} loading="lazy" />
             </div>
 
             <div className="bg-white shadow-sm p-4 absolute w-[200px] sm:w-[300px] ">
@@ -154,6 +154,7 @@ export default function Home() {
                 <Image
                   src={leaf}
                   alt="leaf"
+                  priority={false} loading="lazy"
                   className=" w-[20px] h-[20px] sm:w-[40px] sm:h-[40px]"
                 />
                 <h2 className="text-[12px] md:text-[25px]">
@@ -263,6 +264,7 @@ export default function Home() {
                     src={arrow}
                     alt="arrow"
                     className="w-[40px] h-[40px] shadow-lg"
+                    priority={false} loading="lazy"
                   />
                 </div>
               </div>
@@ -303,6 +305,7 @@ export default function Home() {
               alt="whyChoose"
               className="w-full"
               data-aos="flip-right"
+              priority={false} loading="lazy"
             />
           </div>
         </div>
