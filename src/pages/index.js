@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import {
@@ -8,8 +9,10 @@ import {
   Cog8ToothIcon,
   BoltIcon,
   PhoneIcon,
-  ChatBubbleLeftEllipsisIcon
+  ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Import AOS styles
 import whowe1 from "../../public/images/whowe1.jpg";
 import whowe2 from "../../public/images/whowe2.jpg";
 import leaf from "../../public/images/leaf.png";
@@ -82,21 +85,32 @@ export default function Home() {
   ];
   const howWorkData = [
     {
-      id:1,
-      title:"Consultation with our experts",
-      para:"Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue."
+      id: 1,
+      title: "Consultation with our experts",
+      para: "Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue.",
     },
     {
-      id:2,
-      title:"Get an appointment",
-      para:"Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue."
+      id: 2,
+      title: "Get an appointment",
+      para: "Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue.",
     },
     {
-      id:3,
-      title:"Enjoy your service",
-      para:"Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue."
+      id: 3,
+      title: "Enjoy your service",
+      para: "Cursus potenti maecenas nulla sem letius est torquent luctus. Egestas si efficitur consectetuer litora per augue.",
     },
-  ]
+  ];
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in ms
+      offset: 100, // Offset (px) before animation triggers
+      easing: "ease-in-out", // Smooth transition
+      once: false, // Set to false so animation happens every time on scroll
+      mirror: true, // Allow animation on scroll up as well
+    });
+  }, []);
+
   return (
     <>
       {/* Banner Section */}
@@ -105,10 +119,16 @@ export default function Home() {
         <div className=" mx-auto max-w-7xl flex items-center h-full">
           <div className="lg:basis-1/2 ">
             <div className="flex flex-col gap-5 p-5">
-              <h1 className="text-[35px] sm:text-[50px] lg:text-[65px] capitalize leading-[40px] sm:leading-[50px] xl:leading-[70px] text-black">
+              <h1
+                className="text-[35px] sm:text-[50px] lg:text-[65px] capitalize leading-[40px] sm:leading-[50px] xl:leading-[70px] text-black"
+                data-aos="fade-down"
+              >
                 An Ancient Key for Total Wellbeing
               </h1>
-              <p className="text-[14px] sm:text-[18px] md:text-[24px] text-gray-700 font-normal">
+              <p
+                className="text-[14px] sm:text-[18px] md:text-[24px] text-gray-700 font-normal"
+                data-aos="fade-right"
+              >
                 Velit potenti vulputate phasellus quam odio nullam leo nec massa
                 ligula cursus. Sapien pellentesque orci facilisis magnis
                 efficitur sagittis dictumst.
@@ -131,8 +151,14 @@ export default function Home() {
 
             <div className="bg-white shadow-sm p-4 absolute w-[200px] sm:w-[300px] ">
               <div className="border-[#b2be59] border p-5 flex flex-col items-center text-center">
-                <Image src={leaf} alt="leaf" className=" w-[20px] h-[20px] sm:w-[40px] sm:h-[40px]" />
-                <h2 className="text-[12px] md:text-[25px]">Renew yourself with ayurveda</h2>
+                <Image
+                  src={leaf}
+                  alt="leaf"
+                  className=" w-[20px] h-[20px] sm:w-[40px] sm:h-[40px]"
+                />
+                <h2 className="text-[12px] md:text-[25px]">
+                  Renew yourself with ayurveda
+                </h2>
                 <p className="text-gray-500 text-sm sm:text-base hidden sm:block">
                   Vestibulum blandit ultrices arcu parturient nulla aptent nec
                   consequat facilisi.
@@ -213,6 +239,7 @@ export default function Home() {
               <div
                 key={index}
                 className="relative flex flex-col gap-3 bg-gray-100 p-7"
+                data-aos="zoom-in-up"
               >
                 {IconComponent && (
                   <IconComponent className="w-10 h-10 text-white bg-[#b2be59] p-2" />
@@ -222,7 +249,9 @@ export default function Home() {
                 )}
                 <h3
                   className={`${
-                    index === 0 ? "text-[25px] lg:text-[42px] lg:leading-[40px]" : "text-[25px]"
+                    index === 0
+                      ? "text-[25px] lg:text-[42px] lg:leading-[40px]"
+                      : "text-[25px]"
                   } `}
                 >
                   {ele?.title}
@@ -248,7 +277,9 @@ export default function Home() {
           <div className="basis-2/5">
             <div className="flex flex-col gap-y-5">
               <h4 className="text-[18px] uppercase">Why Choose Us</h4>
-              <h2 className="text-[25px] sm:text-[30px] leading-[28px] md:text-[30px] lg:text-[42px] md:leading-[45px]">Nature’s secret for your truly health</h2>
+              <h2 className="text-[25px] sm:text-[30px] leading-[28px] md:text-[30px] lg:text-[42px] md:leading-[45px]">
+                Nature’s secret for your truly health
+              </h2>
               <p className="text-gray-500 text-[16px]">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
                 tellus, luctus nec ullamcorper mattis.
@@ -267,55 +298,89 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:basis-3/5 md:block">
-              <Image src={whyChoose} alt="whyChoose" className="w-full" />
+            <Image
+              src={whyChoose}
+              alt="whyChoose"
+              className="w-full"
+              data-aos="flip-right"
+            />
           </div>
         </div>
       </section>
 
       {/* How its work */}
       <section className="mx-auto max-w-7xl mt-8 lg:mt-28 p-5">
-            <div className="grid grid-cols-1  lg:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-5">
-                  {
-                    howWorkData?.map((ele,index)=>{
-                        return(
-                          <div key={index} className={`${index===0?"bg-[#b2be59]":"border-l-4 border-l-[#b2be59] "} flex gap-x-5 p-5 shadow-lg items-start `}>
-                              <h6 className={`${index===0?"bg-white text-[#b2be59]": " bg-[#b2be59] text-white "} text-[18px] px-5 py-2 ` }>{ele?.id}</h6>
-                              <div className="flex flex-col">
-                                  <h4 className="text-lg sm:text-[20px] md:text-[24px]">{ele?.title}</h4>
-                                  <p className="text-sm sm:text-[17px] md:text-[18px] text-gray-500">{ele?.para}</p>
-                              </div>
-                          </div>
-                        )
-                    })
-                  }
+        <div className="grid grid-cols-1  lg:grid-cols-2 gap-5">
+          <div className="flex flex-col gap-5">
+            {howWorkData?.map((ele, index) => {
+              return (
+                <div
+                  key={index}
+                  data-aos={index % 2 === 0 ? "fade-up" : "fade-down"} // Alternating animations
+                  data-aos-delay={index * 200} // Increasing delay for staggered effect
+                  data-aos-duration="1000"
+                  className={`${
+                    index === 0
+                      ? "bg-[#b2be59]"
+                      : "border-l-4 border-l-[#b2be59] "
+                  } flex gap-x-5 p-5 shadow-lg items-start `}
+                >
+                  <h6
+                    className={`${
+                      index === 0
+                        ? "bg-white text-[#b2be59]"
+                        : " bg-[#b2be59] text-white "
+                    } text-[18px] px-5 py-2 `}
+                  >
+                    {ele?.id}
+                  </h6>
+                  <div className="flex flex-col">
+                    <h4 className="text-lg sm:text-[20px] md:text-[24px]">
+                      {ele?.title}
+                    </h4>
+                    <p className="text-sm sm:text-[17px] md:text-[18px] text-gray-500">
+                      {ele?.para}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-5 xl:px-8">
-                    <h5 className="text-[18px] uppercase">How It Works</h5>
-                    <h2 className="text-2xl sm:text-[30px]  lg:text-[42px] sm:leading-[45px]">Treat your body with the care of nature</h2>
-                    <p className="text-gray-500 text-sm sm:text-[17px]">Eu turpis ornare bibendum sodales facilisi eros. Id vitae parturient magna ad habitant magnis nec. Congue semper vitae morbi per amet vivamus maximus eu vulputate. Nascetur quam bibendum ligula adipiscing phasellus rutrum sapien magnis nisl pede per. Molestie hac volutpat maecenas eu auctor cursus curabitur vivamus nullam.</p>
-                    <div className="flex flex-col sm:flex-row">
-                        <div className="p-2 bg-gray-100 w-full">
-                            <div className="flex bg-white px-5 py-2 justify-center items-center gap-5">
-                                <PhoneIcon className="w-8 h-8 text-[#b2be59]" />
-                                <div className="flex flex-col">
-                                    <h5 className="text-[19px]">Call Us Now !</h5>
-                                    <h5 className="text-[19px]">888-2003-234</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="p-2 bg-gray-100 w-full">
-                            <div className="flex bg-white px-5 py-2 justify-center items-center gap-5">
-                                <ChatBubbleLeftEllipsisIcon className="w-8 h-8 text-[#b2be59]" />
-                                <div className="flex flex-col">
-                                    <h5 className="text-[19px]">Need Help?</h5>
-                                    <h5 className="text-[19px]">We're Online</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              );
+            })}
+          </div>
+          <div className="flex flex-col gap-5 xl:px-8">
+            <h5 className="text-[18px] uppercase">How It Works</h5>
+            <h2 className="text-2xl sm:text-[30px]  lg:text-[42px] sm:leading-[45px]">
+              Treat your body with the care of nature
+            </h2>
+            <p className="text-gray-500 text-sm sm:text-[17px]">
+              Eu turpis ornare bibendum sodales facilisi eros. Id vitae
+              parturient magna ad habitant magnis nec. Congue semper vitae morbi
+              per amet vivamus maximus eu vulputate. Nascetur quam bibendum
+              ligula adipiscing phasellus rutrum sapien magnis nisl pede per.
+              Molestie hac volutpat maecenas eu auctor cursus curabitur vivamus
+              nullam.
+            </p>
+            <div className="flex flex-col sm:flex-row">
+              <div className="p-2 bg-gray-100 w-full">
+                <div className="flex bg-white px-5 py-2 justify-center items-center gap-5">
+                  <PhoneIcon className="w-8 h-8 text-[#b2be59]" />
+                  <div className="flex flex-col">
+                    <h5 className="text-[19px]">Call Us Now !</h5>
+                    <h5 className="text-[19px]">888-2003-234</h5>
+                  </div>
                 </div>
+              </div>
+              <div className="p-2 bg-gray-100 w-full">
+                <div className="flex bg-white px-5 py-2 justify-center items-center gap-5">
+                  <ChatBubbleLeftEllipsisIcon className="w-8 h-8 text-[#b2be59]" />
+                  <div className="flex flex-col">
+                    <h5 className="text-[19px]">Need Help?</h5>
+                    <h5 className="text-[19px]">We're Online</h5>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
       </section>
     </>
   );
